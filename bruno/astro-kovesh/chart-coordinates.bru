@@ -1,0 +1,30 @@
+meta {
+  name: Chart by coordinates
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/v1/chart
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "date": "2026-04-20",
+    "time": "14:30:00",
+    "location": {
+      "lat": -23.5505,
+      "lng": -46.6333,
+      "name": "Sao Paulo, SP, Brasil",
+      "timezone": "America/Sao_Paulo"
+    },
+    "zodiac_mode": "sidereal",
+    "house_system": "whole_sign"
+  }
+}

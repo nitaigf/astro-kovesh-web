@@ -1,0 +1,29 @@
+{
+  "name": "astro-kovesh-web",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "bun@1.2.18",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "solid-js": "^1.9.5",
+    "three": "^0.175.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "@types/three": "^0.175.0",
+    "@solidjs/testing-library": "^0.8.10",
+    "@testing-library/jest-dom": "^6.6.3",
+    "jsdom": "^25.0.1",
+    "typescript": "^5.8.3",
+    "vite": "^5.4.17",
+    "vite-plugin-solid": "^2.11.8",
+    "vitest": "^2.1.9"
+  }
+}

@@ -1,0 +1,262 @@
+:root {
+  --bg-start: #020611;
+  --bg-mid: #07152f;
+  --bg-end: #140c24;
+  --text-main: #f5f9ff;
+  --text-soft: #b2c9eb;
+  --accent-cyan: #2de2d0;
+  --accent-gold: #ffd166;
+  --glass-bg: rgba(10, 22, 43, 0.19);
+  --glass-border: rgba(164, 199, 255, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+  color: var(--text-main);
+  min-height: 100vh;
+  background: linear-gradient(140deg, var(--bg-start) 0%, var(--bg-mid) 55%, var(--bg-end) 100%);
+}
+
+.page {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 100vh;
+  padding: 24px;
+  display: grid;
+  place-items: center;
+}
+
+.cosmos-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+.cosmos-bg canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.cosmos-fallback {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(45, 226, 208, 0.1), transparent 40%),
+    radial-gradient(circle at 80% 15%, rgba(255, 209, 102, 0.1), transparent 45%),
+    radial-gradient(circle at 50% 85%, rgba(94, 56, 179, 0.18), transparent 40%),
+    linear-gradient(140deg, var(--bg-start) 0%, var(--bg-mid) 55%, var(--bg-end) 100%);
+}
+
+.cosmos-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 22% 34%, rgba(255, 156, 114, 0.08), transparent 38%),
+    radial-gradient(circle at 68% 28%, rgba(97, 198, 255, 0.12), transparent 42%),
+    radial-gradient(circle at 78% 72%, rgba(122, 109, 255, 0.08), transparent 45%),
+    linear-gradient(180deg, rgba(2, 6, 18, 0.06), rgba(2, 5, 14, 0.24));
+}
+
+.content-layer {
+  position: relative;
+  z-index: 2;
+}
+
+.glass-card {
+  width: min(1080px, 100%);
+  border: 1px solid rgba(214, 231, 255, 0.48);
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(18px) saturate(128%);
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.52),
+    0 24px 70px rgba(0, 0, 0, 0.48);
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  letter-spacing: 0.04em;
+}
+
+.subtitle {
+  margin-top: 8px;
+  color: var(--text-soft);
+}
+
+.docs-links {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.doc-link-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: 1px solid rgba(151, 190, 255, 0.35);
+  border-radius: 12px;
+  padding: 10px 14px;
+  background: rgba(7, 15, 34, 0.75);
+  color: var(--text-main);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.doc-link-btn:hover {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 2px rgba(45, 226, 208, 0.18);
+}
+
+.form {
+  margin-top: 22px;
+  display: grid;
+  gap: 14px;
+}
+
+.grid {
+  display: grid;
+  gap: 12px;
+}
+
+.two-cols {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.three-cols {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  font-size: 0.92rem;
+  color: #d7e5ff;
+}
+
+input,
+select,
+button {
+  border: 1px solid rgba(151, 190, 255, 0.25);
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: rgba(7, 15, 34, 0.75);
+  color: var(--text-main);
+  font-size: 0.95rem;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 2px rgba(45, 226, 208, 0.2);
+}
+
+button {
+  justify-self: start;
+  cursor: pointer;
+  background: linear-gradient(120deg, #11465f, #0c6b7f);
+  border-color: #2de2d0;
+  font-weight: 600;
+}
+
+button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.error-box {
+  margin-top: 14px;
+  padding: 12px;
+  border: 1px solid rgba(255, 120, 120, 0.35);
+  border-radius: 12px;
+  background: rgba(81, 17, 17, 0.5);
+  color: #ffd7d7;
+}
+
+.results {
+  margin-top: 24px;
+  display: grid;
+  gap: 14px;
+}
+
+.result-block {
+  border: 1px solid rgba(131, 169, 225, 0.22);
+  border-radius: 16px;
+  padding: 16px;
+  background: rgba(6, 14, 31, 0.6);
+}
+
+.result-block h2 {
+  margin-top: 0;
+  font-size: 1.15rem;
+  color: #e5efff;
+}
+
+.chart-wheel {
+  width: min(100%, 440px);
+  display: block;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid rgba(140, 172, 223, 0.2);
+}
+
+.house-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.house-chip {
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: rgba(21, 46, 82, 0.8);
+  border: 1px solid rgba(109, 147, 205, 0.35);
+  font-size: 0.9rem;
+}
+
+.aspects-list {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 6px;
+}
+
+@media (max-width: 900px) {
+  .three-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .two-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .glass-card {
+    padding: 20px;
+  }
+}
