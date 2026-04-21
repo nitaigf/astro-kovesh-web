@@ -80,6 +80,10 @@ Variavel obrigatoria na Vercel:
 
 - `VITE_API_BASE_URL=https://<seu-dominio-da-api>`
 
+Exemplo para este projeto:
+
+- `VITE_API_BASE_URL=https://astro-kovesh-api.vercel.app`
+
 Compatibilidade:
 
 - alinhar releases com `contracts/release-compatibility.md` no repositorio pai.
