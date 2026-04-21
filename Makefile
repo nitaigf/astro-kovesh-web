@@ -1,24 +1,16 @@
-PYTHON ?= python3
-API_DIR := api
-WEB_DIR := web
+WEB_DIR := .
 
-.PHONY: help api-install api-run api-test web-install web-run web-build web-test install test run dev docker-up docker-down git-init git-remote-origin git-flow-init git-flow-feature-start git-flow-feature-finish git-flow-release-start git-flow-release-finish git-flow-hotfix-start git-flow-hotfix-finish
+.PHONY: help web-install web-run web-build web-test install test run git-init git-remote-origin git-flow-init git-flow-feature-start git-flow-feature-finish git-flow-release-start git-flow-release-finish git-flow-hotfix-start git-flow-hotfix-finish
 
 help:
 	@echo "Targets available:"
-	@echo "  make install     - Install API and web dependencies"
-	@echo "  make run         - Show run commands for API and web"
-	@echo "  make test        - Run API and web tests"
-	@echo "  make api-install - Install API dependencies"
-	@echo "  make api-run     - Run FastAPI with reload"
-	@echo "  make api-test    - Run API tests"
+	@echo "  make install     - Install web dependencies"
+	@echo "  make run         - Show run commands for web"
+	@echo "  make test        - Run web tests"
 	@echo "  make web-install - Install web dependencies"
 	@echo "  make web-run     - Run web dev server"
 	@echo "  make web-build   - Build web"
 	@echo "  make web-test    - Run web tests"
-	@echo "  make dev         - Run API and web together"
-	@echo "  make docker-up   - Start Docker Compose"
-	@echo "  make docker-down - Stop Docker Compose"
 	@echo "  make git-init                    - Initialize git repository"
 	@echo "  make git-remote-origin ORIGIN_URL=git@github.com:user/repo.git"
 	@echo "  make git-flow-init               - Initialize Git Flow defaults"
@@ -28,15 +20,6 @@ help:
 	@echo "  make git-flow-release-finish NAME=0.1.0"
 	@echo "  make git-flow-hotfix-start NAME=0.1.1"
 	@echo "  make git-flow-hotfix-finish NAME=0.1.1"
-
-api-install:
-	cd $(API_DIR) && $(PYTHON) -m pip install -r requirements-dev.txt
-
-api-run:
-	cd $(API_DIR) && $(PYTHON) -m app.run
-
-api-test:
-	cd $(API_DIR) && pytest -q
 
 web-install:
 	cd $(WEB_DIR) && bun install
@@ -50,22 +33,12 @@ web-build:
 web-test:
 	cd $(WEB_DIR) && bun run test
 
-install: api-install web-install
+install: web-install
 
-test: api-test web-test
+test: web-test
 
 run:
-	@echo "Run API: cd api && python3 -m app.run"
-	@echo "Run WEB: cd web && bun run dev"
-
-dev:
-	@$(MAKE) -j2 api-run web-run
-
-docker-up:
-	docker compose up --build
-
-docker-down:
-	docker compose down
+	@echo "Run WEB: bun run dev"
 
 git-init:
 	git init
